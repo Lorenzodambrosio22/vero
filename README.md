@@ -14,8 +14,8 @@ A cascade, cheapest step first:
 
 1. **General rules** for the common, unambiguous cases.
 2. **The firm's own rules**, learned from the accountant's corrections.
-3. **Embedding search** over transactions already confirmed (pgvector).
-4. **An LLM**, only for what's left.
+3. **Embedding search** over transactions already confirmed (OpenAI embeddings stored in pgvector).
+4. **An LLM** (Claude or OpenAI), only for what's left.
 
 A separate confidence engine, with no LLM in it, decided what happened next: above 90 the entry was booked automatically, between 70 and 90 it was proposed, below 70 it went to a person. Every correction became a rule for that firm.
 
@@ -28,6 +28,6 @@ A separate confidence engine, with no LLM in it, decided what happened next: abo
 
 ## Stack
 
-Python · FastAPI · React + Vite · Supabase (Postgres, pgvector) · Redis / RQ · Claude API · n8n · 42 pytest tests
+Python · FastAPI · React + Vite · Supabase (Postgres, pgvector) · Redis / RQ · Claude API · OpenAI API · n8n · 42 pytest tests
 
 The code is private. Happy to walk through the architecture and what I learned from shutting it down.
